@@ -1,13 +1,14 @@
 //
-//  SQLiteManager.m
+//  OPDSQLiteManager.m
 //  PandaDBOC
 //
 //  Created by lingen on 2016/12/14.
 //  Copyright © 2016年 lingen. All rights reserved.
 //
 
-#import "SQLiteManager.h"
+#import "OPDSQLiteManager.h"
 #import <sqlite3.h>
+
 
 static NSString* BEGIN_TRANSACTION = @"BEGIN TRANSACTION;";
 
@@ -23,7 +24,8 @@ static NSString* TYPE_REAL = @"REAL";
 
 static NSString* TYPE_BLOB = @"BLOB";
 
-@interface SQLiteManager()
+@interface OPDSQLiteManager()
+
 
 /*
  * DB File Location
@@ -44,7 +46,7 @@ static NSString* TYPE_BLOB = @"BLOB";
 
 @end
 
-@implementation SQLiteManager
+@implementation OPDSQLiteManager
 
 -(instancetype)initWithDBFileName:(NSString*)dbFileName{
     if (self = [super init]) {
@@ -74,7 +76,7 @@ static NSString* TYPE_BLOB = @"BLOB";
  * Execute a update for a sql
  */
 -(BOOL)executeUpdate:(NSString*)sql{
-   return [self executeUpdate:sql params:nil];
+    return [self executeUpdate:sql params:nil];
 }
 
 #pragma mark UPDATE
@@ -82,11 +84,11 @@ static NSString* TYPE_BLOB = @"BLOB";
  * Execute a update for a sql and params,the params is dictionary
  */
 -(BOOL)executeUpdate:(NSString*)sql params:(NSDictionary<NSString*,NSObject*>*)params{
-
+    
     sqlite3_stmt *stmt = nil;
     
     int prepare_result = sqlite3_prepare_v2(_sqlite3Database, [sql UTF8String], -1, &stmt, NULL);
-
+    
     if (prepare_result != SQLITE_OK) {
         [self p_checkError];
         return NO;
@@ -159,7 +161,7 @@ static NSString* TYPE_BLOB = @"BLOB";
  */
 -(NSArray<NSDictionary<NSString*,NSObject*>*>* )executeQuery:(NSString*)querySQL params:(NSDictionary<NSString*,NSObject*>*)params{
     sqlite3_stmt *stmt = nil;
-
+    
     int prepare_result = sqlite3_prepare_v2(_sqlite3Database, [querySQL UTF8String], -1, &stmt, NULL);
     
     if (prepare_result != SQLITE_OK) {
@@ -213,7 +215,7 @@ static NSString* TYPE_BLOB = @"BLOB";
     }
     
     return nil;
-
+    
 }
 
 -(void)p_checkError{
@@ -236,7 +238,12 @@ static NSString* TYPE_BLOB = @"BLOB";
 -(void)rollback{
     sqlite3_exec(_sqlite3Database, [COMMIT UTF8String], nil, nil, nil);
     _inTransaction = NO;
-
+    
 }
+
+-(BOOL)isInTransaction{
+    return _inTransaction;
+}
+
 
 @end

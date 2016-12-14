@@ -1,5 +1,5 @@
 //
-//  SQLiteManager.h
+//  OPDSQLiteManager.h
 //  PandaDBOC
 //
 //  Created by lingen on 2016/12/14.
@@ -8,46 +8,58 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface SQLiteManager : NSObject
+@interface OPDSQLiteManager : NSObject
 
 -(instancetype)initWithDBFileName:(NSString*)dbFileName;
 
 /*
- * Open the connection with db file
+ * open the connection with db file
  */
 -(BOOL)open;
 
 /*
- * Close the db connection
+ * close the db connection
  */
 -(void)close;
 
 /*
- * Execute a update for a sql
+ * execute a update for a sql
  */
 -(BOOL)executeUpdate:(NSString*)sql;
 
 /*
- * Execute a update for a sql and params,the params is dictionary
+ * execute a update for a sql and params,the params is dictionary
  */
 -(BOOL)executeUpdate:(NSString*)sql params:(NSDictionary<NSString*,NSObject*>*)params;
 
 /*
- * Execute a query
+ * execute a query
  */
 -(NSArray<NSDictionary<NSString*,NSObject*>*>*)executeQuery:(NSString*)querySQL;
 
 /*
- * Execute a query with a param
+ * execute a query with a param
  */
 -(NSArray<NSDictionary<NSString*,NSObject*>*>*)executeQuery:(NSString*)querySQL params:(NSDictionary<NSString*,NSObject*>*)params;
 
+/*
+ * begin A Transaction
+ */
 -(void)beginTransaction;
 
+/*
+ * a transaction success,commit it
+ */
 -(void)commit;
 
+/*
+ * a transaction fail,rollback it
+ */
 -(void)rollback;
 
+/*
+ * check if is it current db connection in transactiono
+ */
+-(BOOL)isInTransaction;
 
 @end

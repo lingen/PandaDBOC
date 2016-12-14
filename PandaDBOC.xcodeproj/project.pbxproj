@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		674BB7561E00ED81000FDD48 /* PandaDBOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674BB74C1E00ED81000FDD48 /* PandaDBOC.framework */; };
 		674BB75D1E00ED81000FDD48 /* PandaDBOC.h in Headers */ = {isa = PBXBuildFile; fileRef = 674BB74F1E00ED81000FDD48 /* PandaDBOC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		674BB7681E00EE16000FDD48 /* SQLiteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 674BB7661E00EE16000FDD48 /* SQLiteManager.h */; };
-		674BB7691E00EE16000FDD48 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB7671E00EE16000FDD48 /* SQLiteManager.m */; };
 		674BB76C1E00EE68000FDD48 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 674BB76B1E00EE68000FDD48 /* libsqlite3.0.tbd */; };
-		674BB76E1E00F216000FDD48 /* SQLiteManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB76D1E00F216000FDD48 /* SQLiteManagerTests.m */; };
+		674BB7891E012433000FDD48 /* OPDSQLiteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 674BB7871E012433000FDD48 /* OPDSQLiteManager.h */; };
+		674BB78A1E012433000FDD48 /* OPDSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB7881E012433000FDD48 /* OPDSQLiteManager.m */; };
+		674BB78E1E0124B5000FDD48 /* OPDSQLiteManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,10 +31,10 @@
 		674BB7501E00ED81000FDD48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		674BB7551E00ED81000FDD48 /* PandaDBOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PandaDBOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		674BB75C1E00ED81000FDD48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		674BB7661E00EE16000FDD48 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
-		674BB7671E00EE16000FDD48 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
 		674BB76B1E00EE68000FDD48 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		674BB76D1E00F216000FDD48 /* SQLiteManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManagerTests.m; sourceTree = "<group>"; };
+		674BB7871E012433000FDD48 /* OPDSQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDSQLiteManager.h; sourceTree = "<group>"; };
+		674BB7881E012433000FDD48 /* OPDSQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDSQLiteManager.m; sourceTree = "<group>"; };
+		674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDSQLiteManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 			children = (
 				674BB74F1E00ED81000FDD48 /* PandaDBOC.h */,
 				674BB7501E00ED81000FDD48 /* Info.plist */,
-				674BB7661E00EE16000FDD48 /* SQLiteManager.h */,
-				674BB7671E00EE16000FDD48 /* SQLiteManager.m */,
+				674BB7871E012433000FDD48 /* OPDSQLiteManager.h */,
+				674BB7881E012433000FDD48 /* OPDSQLiteManager.m */,
 			);
 			path = PandaDBOC;
 			sourceTree = "<group>";
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				674BB75C1E00ED81000FDD48 /* Info.plist */,
-				674BB76D1E00F216000FDD48 /* SQLiteManagerTests.m */,
+				674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */,
 			);
 			path = PandaDBOCTests;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				674BB7681E00EE16000FDD48 /* SQLiteManager.h in Headers */,
+				674BB7891E012433000FDD48 /* OPDSQLiteManager.h in Headers */,
 				674BB75D1E00ED81000FDD48 /* PandaDBOC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				674BB7691E00EE16000FDD48 /* SQLiteManager.m in Sources */,
+				674BB78A1E012433000FDD48 /* OPDSQLiteManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				674BB76E1E00F216000FDD48 /* SQLiteManagerTests.m in Sources */,
+				674BB78E1E0124B5000FDD48 /* OPDSQLiteManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +412,7 @@
 				674BB7621E00ED81000FDD48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		674BB7631E00ED81000FDD48 /* Build configuration list for PBXNativeTarget "PandaDBOCTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				674BB7651E00ED81000FDD48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
