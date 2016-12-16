@@ -13,6 +13,13 @@
 		674BB7891E012433000FDD48 /* OPDSQLiteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 674BB7871E012433000FDD48 /* OPDSQLiteManager.h */; };
 		674BB78A1E012433000FDD48 /* OPDSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB7881E012433000FDD48 /* OPDSQLiteManager.m */; };
 		674BB78E1E0124B5000FDD48 /* OPDSQLiteManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */; };
+		67EEDF1B1E03D024001EBAE8 /* OPDRepository.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EEDF141E03D024001EBAE8 /* OPDRepository.h */; };
+		67EEDF1C1E03D024001EBAE8 /* OPDRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EEDF151E03D024001EBAE8 /* OPDRepository.m */; };
+		67EEDF1D1E03D024001EBAE8 /* OPDTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EEDF161E03D024001EBAE8 /* OPDTable.m */; };
+		67EEDF1E1E03D024001EBAE8 /* OPDTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EEDF171E03D024001EBAE8 /* OPDTable.h */; };
+		67EEDF1F1E03D024001EBAE8 /* OPDTableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EEDF181E03D024001EBAE8 /* OPDTableProtocol.h */; };
+		67EEDF201E03D024001EBAE8 /* OPDColumn.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EEDF191E03D024001EBAE8 /* OPDColumn.h */; };
+		67EEDF211E03D024001EBAE8 /* OPDColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EEDF1A1E03D024001EBAE8 /* OPDColumn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,13 @@
 		674BB7871E012433000FDD48 /* OPDSQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDSQLiteManager.h; sourceTree = "<group>"; };
 		674BB7881E012433000FDD48 /* OPDSQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDSQLiteManager.m; sourceTree = "<group>"; };
 		674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDSQLiteManagerTests.m; sourceTree = "<group>"; };
+		67EEDF141E03D024001EBAE8 /* OPDRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDRepository.h; sourceTree = "<group>"; };
+		67EEDF151E03D024001EBAE8 /* OPDRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDRepository.m; sourceTree = "<group>"; };
+		67EEDF161E03D024001EBAE8 /* OPDTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDTable.m; sourceTree = "<group>"; };
+		67EEDF171E03D024001EBAE8 /* OPDTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDTable.h; sourceTree = "<group>"; };
+		67EEDF181E03D024001EBAE8 /* OPDTableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDTableProtocol.h; sourceTree = "<group>"; };
+		67EEDF191E03D024001EBAE8 /* OPDColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDColumn.h; sourceTree = "<group>"; };
+		67EEDF1A1E03D024001EBAE8 /* OPDColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDColumn.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +93,13 @@
 		674BB74E1E00ED81000FDD48 /* PandaDBOC */ = {
 			isa = PBXGroup;
 			children = (
+				67EEDF141E03D024001EBAE8 /* OPDRepository.h */,
+				67EEDF151E03D024001EBAE8 /* OPDRepository.m */,
+				67EEDF161E03D024001EBAE8 /* OPDTable.m */,
+				67EEDF171E03D024001EBAE8 /* OPDTable.h */,
+				67EEDF181E03D024001EBAE8 /* OPDTableProtocol.h */,
+				67EEDF191E03D024001EBAE8 /* OPDColumn.h */,
+				67EEDF1A1E03D024001EBAE8 /* OPDColumn.m */,
 				674BB74F1E00ED81000FDD48 /* PandaDBOC.h */,
 				674BB7501E00ED81000FDD48 /* Info.plist */,
 				674BB7871E012433000FDD48 /* OPDSQLiteManager.h */,
@@ -111,8 +132,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EEDF1B1E03D024001EBAE8 /* OPDRepository.h in Headers */,
+				67EEDF1F1E03D024001EBAE8 /* OPDTableProtocol.h in Headers */,
 				674BB7891E012433000FDD48 /* OPDSQLiteManager.h in Headers */,
 				674BB75D1E00ED81000FDD48 /* PandaDBOC.h in Headers */,
+				67EEDF201E03D024001EBAE8 /* OPDColumn.h in Headers */,
+				67EEDF1E1E03D024001EBAE8 /* OPDTable.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EEDF1D1E03D024001EBAE8 /* OPDTable.m in Sources */,
 				674BB78A1E012433000FDD48 /* OPDSQLiteManager.m in Sources */,
+				67EEDF1C1E03D024001EBAE8 /* OPDRepository.m in Sources */,
+				67EEDF211E03D024001EBAE8 /* OPDColumn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -139,7 +139,8 @@ static NSString* TYPE_BLOB = @"BLOB";
                     int intValue = [numberValue intValue];
                     sqlite3_bind_int(stmt, i, intValue);
                 }
-            }else if([value isKindOfClass:[NSData class]]){
+            }
+            else if([value isKindOfClass:[NSData class]]){
                 NSData* dataValue = (NSData*)value;
                 sqlite3_bind_blob(stmt, 5, [dataValue bytes], (int)[dataValue length], SQLITE_TRANSIENT);
             }
