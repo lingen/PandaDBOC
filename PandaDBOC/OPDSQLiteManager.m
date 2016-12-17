@@ -32,7 +32,6 @@ static NSString* TYPE_BLOB = @"BLOB";
  */
 @property (nonatomic, strong) NSString *dbFilePath;
 
-
 @property (nonatomic,assign) sqlite3 *sqlite3Database;
 
 @property (nonatomic,assign) BOOL inTransaction;
@@ -144,8 +143,35 @@ static NSString* TYPE_BLOB = @"BLOB";
                 NSData* dataValue = (NSData*)value;
                 sqlite3_bind_blob(stmt, 5, [dataValue bytes], (int)[dataValue length], SQLITE_TRANSIENT);
             }
+            
+            else if([value isKindOfClass:[NSArray class]]){
+                NSArray* arrayValue = (NSArray*)value;
+                NSString* stringValue = [self parseArray:arrayValue];
+                sqlite3_bind_text(stmt, i, [stringValue UTF8String], -1, SQLITE_TRANSIENT);
+            }
+            
+            else if([value isKindOfClass:[NSMutableArray class]]){
+                NSArray* arrayValue = [((NSMutableArray*)value) copy];
+                NSString* stringValue = [self parseArray:arrayValue];
+                sqlite3_bind_text(stmt, i, [stringValue UTF8String], -1, SQLITE_TRANSIENT);
+            }
         }
     }
+}
+
+-(NSString*)parseArray:(NSArray*)values{
+    NSMutableString* result = [[NSMutableString alloc] init];
+    
+    for (int i =0; i < values.count; i++) {
+        NSString* value = [values[i] description];
+        [result appendString:value];
+        
+        if (i != values.count - 1) {
+            [result appendString:@","];
+        }
+    }
+    
+    return [result copy];
 }
 
 #pragma mark QUERY
