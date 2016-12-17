@@ -10,6 +10,8 @@
 
 @interface OPDSQLiteManager : NSObject
 
+-(instancetype)initWithDBFileName:(NSString*)dbFileName;
+
 -(instancetype)initWithDBPath:(NSString*)dbPath;
 
 /*

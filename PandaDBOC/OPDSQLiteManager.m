@@ -43,6 +43,16 @@ static NSString* TYPE_BLOB = @"BLOB";
 
 @implementation OPDSQLiteManager
 
+
+-(instancetype)initWithDBFileName:(NSString*)dbFileName{
+    if (self = [super init]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString* documentsDirectory = [paths objectAtIndex:0];
+        _dbFilePath = [documentsDirectory stringByAppendingPathComponent:dbFileName];
+    }
+    return self;
+}
+
 -(instancetype)initWithDBPath:(NSString*)dbPath{
     if (self = [super init]) {
         _dbFilePath = dbPath;

@@ -15,4 +15,3 @@ FOUNDATION_EXPORT double PandaDBOCVersionNumber;
 FOUNDATION_EXPORT const unsigned char PandaDBOCVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <PandaDBOC/PublicHeader.h>
-
