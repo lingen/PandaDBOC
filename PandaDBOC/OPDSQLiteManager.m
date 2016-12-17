@@ -8,7 +8,7 @@
 
 #import "OPDSQLiteManager.h"
 #import <sqlite3.h>
-
+#import "OPDSqlAndParams.h"
 
 static NSString* BEGIN_TRANSACTION = @"BEGIN TRANSACTION;";
 
@@ -189,6 +189,11 @@ static NSString* TYPE_BLOB = @"BLOB";
 -(NSArray<NSDictionary<NSString*,NSObject*>*>* )executeQuery:(NSString*)querySQL params:(NSDictionary<NSString*,NSObject*>*)params{
     sqlite3_stmt *stmt = nil;
     
+    OPDSqlAndParams* sqlAndParmas = [self dealWithArray:querySQL params:params];
+    
+    querySQL = sqlAndParmas.sql;
+    params = sqlAndParmas.params;
+    
     int prepare_result = sqlite3_prepare_v2(_sqlite3Database, [querySQL UTF8String], -1, &stmt, NULL);
     
     if (prepare_result != SQLITE_OK) {
@@ -245,6 +250,51 @@ static NSString* TYPE_BLOB = @"BLOB";
     
 }
 
+-(OPDSqlAndParams*)dealWithArray:(NSString*)sql params:(NSDictionary*)params{
+    if (!params || params.count == 0) {
+        return [[OPDSqlAndParams alloc] initWithSql:sql andParams:params];
+    }
+    
+    NSMutableDictionary* generatedParams = [[NSMutableDictionary alloc] init];
+    
+    NSString* genereatedSQL = [sql copy];
+    
+    for (NSString* key in params) {
+        id value = params[key];
+        if ([value isKindOfClass:[NSArray class]]) {
+            NSArray* arrayValues = (NSArray*)value;
+            NSString* replaceKey = [NSString stringWithFormat:@":%@",key];
+            
+            NSMutableString* replaceValue = [[NSMutableString alloc] init];
+            [replaceValue appendString:@"("];
+            int count = (int)arrayValues.count;
+            for (int index = 0; index < count; index ++) {
+                
+                NSString* copyKey = [NSString stringWithFormat:@"%@%@",key,@(index)];
+                NSString* copyValue = arrayValues[index];
+                generatedParams[copyKey] = copyValue;
+                
+                [replaceValue appendString:[NSString stringWithFormat:@":%@",copyKey]];
+                if (index != count - 1) {
+                    [replaceValue appendString:@","];
+                }
+            }
+            
+            [replaceValue appendString:@")"];
+            
+            
+            genereatedSQL = [genereatedSQL stringByReplacingOccurrencesOfString:replaceKey withString:replaceValue];
+            
+            
+        }else{
+            generatedParams[key] = value;
+        }
+        
+    }
+    
+    return [[OPDSqlAndParams alloc] initWithSql:genereatedSQL andParams:[generatedParams copy]];
+}
+
 -(void)p_checkError{
     _errorMsg = [NSString stringWithUTF8String:sqlite3_errmsg(_sqlite3Database)];
     NSLog(@"PANDA DB ERROR:%@",_errorMsg);
@@ -271,6 +321,5 @@ static NSString* TYPE_BLOB = @"BLOB";
 -(BOOL)isInTransaction{
     return _inTransaction;
 }
-
 
 @end
