@@ -53,27 +53,6 @@
 -(BOOL)executeUpdate:(NSString*)sql withDictionaryArgs:(NSDictionary*)args;
 
 
-#pragma 同步更新方法，多个SQL
-/**
- *  执行一系列的SQL操作
- *
- *  @param sqls SQL语句集合
- *
- *  @return 返回成功或失败，只有所有的成功才会成功
- */
--(BOOL)executeUpdates:(NSArray *)sqls;
-
-/**
- *  执行一系列的SQL操作
- *
- *  @param sqls SQL语句集合
- *  @param args 对应的参数列表，有多少个SQL，就必须有多少个参数列表
- *
- *  @return 返回成功或失败，只有所有的成功才会成功
- */
--(BOOL)executeUpdates:(NSArray *)sqls withDictionaryArgs:(NSArray*)args;
-
-
 /**
  *  将BLOCK里的数据库操作，全部归纳到一个事务中去
  *
@@ -176,6 +155,6 @@
  *
  *  @return 返回结果
  */
--(BOOL)queryTableExists:(NSString*)tableName;
+-(BOOL)tableExists:(NSString*)tableName;
 
 @end

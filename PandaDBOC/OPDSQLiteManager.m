@@ -32,11 +32,6 @@ static NSString* TYPE_BLOB = @"BLOB";
  */
 @property (nonatomic, strong) NSString *dbFilePath;
 
-/*
- * DB File name
- */
-@property (nonatomic, strong) NSString *dbFileName;
-
 
 @property (nonatomic,assign) sqlite3 *sqlite3Database;
 
@@ -48,18 +43,13 @@ static NSString* TYPE_BLOB = @"BLOB";
 
 @implementation OPDSQLiteManager
 
--(instancetype)initWithDBFileName:(NSString*)dbFileName{
+-(instancetype)initWithDBPath:(NSString*)dbPath{
     if (self = [super init]) {
-        _dbFileName = dbFileName;
-        
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString* documentsDirectory = [paths objectAtIndex:0];
-        _dbFilePath = [documentsDirectory stringByAppendingPathComponent:_dbFileName];
+        _dbFilePath = dbPath;
         
     }
     return self;
 }
-
 
 -(BOOL)open{
     if (sqlite3_open([_dbFilePath UTF8String], &_sqlite3Database) == SQLITE_OK) {
