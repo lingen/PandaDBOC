@@ -141,7 +141,7 @@ static NSString* TYPE_BLOB = @"BLOB";
             }
             else if([value isKindOfClass:[NSData class]]){
                 NSData* dataValue = (NSData*)value;
-                sqlite3_bind_blob(stmt, 5, [dataValue bytes], (int)[dataValue length], SQLITE_TRANSIENT);
+                sqlite3_bind_blob(stmt, i, [dataValue bytes], (int)[dataValue length], SQLITE_TRANSIENT);
             }
             
             else if([value isKindOfClass:[NSArray class]]){
@@ -224,7 +224,12 @@ static NSString* TYPE_BLOB = @"BLOB";
 
 -(id)toOCValue:(sqlite3_stmt*)stmt index:(int)index{
     
-    NSString* columnType = [[NSString stringWithUTF8String:sqlite3_column_decltype(stmt, index)] uppercaseString];
+    NSString* columnType = TYPE_TEXT;
+    
+    const char * type = sqlite3_column_decltype(stmt, index);
+    if (type) {
+       columnType = [[NSString stringWithUTF8String:type] uppercaseString];
+    }
     
     if ([columnType isEqualToString:TYPE_TEXT]) {
         char *dbDataAsChars = (char *)sqlite3_column_text(stmt, index);

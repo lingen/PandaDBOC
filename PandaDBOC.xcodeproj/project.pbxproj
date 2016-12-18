@@ -15,6 +15,11 @@
 		674BB7891E012433000FDD48 /* OPDSQLiteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 674BB7871E012433000FDD48 /* OPDSQLiteManager.h */; };
 		674BB78A1E012433000FDD48 /* OPDSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB7881E012433000FDD48 /* OPDSQLiteManager.m */; };
 		674BB78E1E0124B5000FDD48 /* OPDSQLiteManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */; };
+		67D958201E06218A0049C46E /* OPDRepositoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D9581F1E06218A0049C46E /* OPDRepositoryTest.m */; };
+		67D958261E0621FF0049C46E /* OPDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D958231E0621FF0049C46E /* OPDUser.m */; };
+		67D958271E0621FF0049C46E /* OPDUser+DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D958251E0621FF0049C46E /* OPDUser+DB.m */; };
+		67D9582B1E0622260049C46E /* OPDUserRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D9582A1E0622260049C46E /* OPDUserRepository.m */; };
+		67D9582E1E06237E0049C46E /* OPDUser+Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D9582D1E06237E0049C46E /* OPDUser+Repository.m */; };
 		67EEDF1B1E03D024001EBAE8 /* OPDRepository.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EEDF141E03D024001EBAE8 /* OPDRepository.h */; };
 		67EEDF1C1E03D024001EBAE8 /* OPDRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EEDF151E03D024001EBAE8 /* OPDRepository.m */; };
 		67EEDF1D1E03D024001EBAE8 /* OPDTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EEDF161E03D024001EBAE8 /* OPDTable.m */; };
@@ -46,6 +51,15 @@
 		674BB7871E012433000FDD48 /* OPDSQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDSQLiteManager.h; sourceTree = "<group>"; };
 		674BB7881E012433000FDD48 /* OPDSQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDSQLiteManager.m; sourceTree = "<group>"; };
 		674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDSQLiteManagerTests.m; sourceTree = "<group>"; };
+		67D9581F1E06218A0049C46E /* OPDRepositoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDRepositoryTest.m; sourceTree = "<group>"; };
+		67D958221E0621FF0049C46E /* OPDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDUser.h; sourceTree = "<group>"; };
+		67D958231E0621FF0049C46E /* OPDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDUser.m; sourceTree = "<group>"; };
+		67D958241E0621FF0049C46E /* OPDUser+DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OPDUser+DB.h"; sourceTree = "<group>"; };
+		67D958251E0621FF0049C46E /* OPDUser+DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OPDUser+DB.m"; sourceTree = "<group>"; };
+		67D958291E0622260049C46E /* OPDUserRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDUserRepository.h; sourceTree = "<group>"; };
+		67D9582A1E0622260049C46E /* OPDUserRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDUserRepository.m; sourceTree = "<group>"; };
+		67D9582C1E06237E0049C46E /* OPDUser+Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OPDUser+Repository.h"; sourceTree = "<group>"; };
+		67D9582D1E06237E0049C46E /* OPDUser+Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OPDUser+Repository.m"; sourceTree = "<group>"; };
 		67EEDF141E03D024001EBAE8 /* OPDRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDRepository.h; sourceTree = "<group>"; };
 		67EEDF151E03D024001EBAE8 /* OPDRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDRepository.m; sourceTree = "<group>"; };
 		67EEDF161E03D024001EBAE8 /* OPDTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDTable.m; sourceTree = "<group>"; };
@@ -117,8 +131,10 @@
 		674BB7591E00ED81000FDD48 /* PandaDBOCTests */ = {
 			isa = PBXGroup;
 			children = (
+				67D958211E0621E90049C46E /* user */,
 				674BB75C1E00ED81000FDD48 /* Info.plist */,
 				674BB78D1E0124B5000FDD48 /* OPDSQLiteManagerTests.m */,
+				67D9581F1E06218A0049C46E /* OPDRepositoryTest.m */,
 			);
 			path = PandaDBOCTests;
 			sourceTree = "<group>";
@@ -129,6 +145,21 @@
 				674BB76B1E00EE68000FDD48 /* libsqlite3.0.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67D958211E0621E90049C46E /* user */ = {
+			isa = PBXGroup;
+			children = (
+				67D958221E0621FF0049C46E /* OPDUser.h */,
+				67D958231E0621FF0049C46E /* OPDUser.m */,
+				67D958241E0621FF0049C46E /* OPDUser+DB.h */,
+				67D958251E0621FF0049C46E /* OPDUser+DB.m */,
+				67D958291E0622260049C46E /* OPDUserRepository.h */,
+				67D9582A1E0622260049C46E /* OPDUserRepository.m */,
+				67D9582C1E06237E0049C46E /* OPDUser+Repository.h */,
+				67D9582D1E06237E0049C46E /* OPDUser+Repository.m */,
+			);
+			path = user;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67D958261E0621FF0049C46E /* OPDUser.m in Sources */,
+				67D9582B1E0622260049C46E /* OPDUserRepository.m in Sources */,
+				67D958201E06218A0049C46E /* OPDRepositoryTest.m in Sources */,
+				67D958271E0621FF0049C46E /* OPDUser+DB.m in Sources */,
+				67D9582E1E06237E0049C46E /* OPDUser+Repository.m in Sources */,
 				674BB78E1E0124B5000FDD48 /* OPDSQLiteManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

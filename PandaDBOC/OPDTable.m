@@ -10,7 +10,7 @@
 #import "OPDColumn.h"
 
 
-NSString* OPD_ID = @"opf_id_";
+NSString* OPD_ID = @"opd_id_";
 
 @implementation OPDTable
 

@@ -60,6 +60,8 @@ static NSString* DB_QUEUE_NAME = @"PANDA DB OC QUEUE";
         _tables = [tables copy];
         _version = version;
         _dbQueue = dispatch_queue_create([DB_QUEUE_NAME UTF8String], DISPATCH_QUEUE_SERIAL);
+        
+        [self p_initOrUpdate];
     }
     return self;
 }
@@ -138,9 +140,13 @@ static NSString* DB_QUEUE_NAME = @"PANDA DB OC QUEUE";
         [_sqliteManager beginTransaction];
         
         NSArray* result = [_sqliteManager executeQuery:QUERY_CURRENT_VERSION];
-        NSDictionary* value = result[0];
         
-        int currentVersion = [value[@"value_"] intValue];
+        int currentVersion = 1;
+        if (result.count > 0) {
+            NSDictionary* value = result[0];
+            currentVersion = [value[@"value_"] intValue];
+        }
+        
         
         NSMutableArray *sqls = [[NSMutableArray alloc] init];
 
@@ -149,7 +155,9 @@ static NSString* DB_QUEUE_NAME = @"PANDA DB OC QUEUE";
             //进行数据库层的初始化操作
             if ([tableProtocolClass conformsToProtocol:@protocol(OPDTableProtocol)]) {
                 OPDTable* opfTable = [tableProtocolClass performSelector:@selector(createTable)];
-                
+                if (!opfTable) {
+                    continue;
+                }
                 BOOL tableExist = [self p_tableExists:opfTable.tableName];
                 
                 if (!tableExist) {
@@ -173,7 +181,9 @@ static NSString* DB_QUEUE_NAME = @"PANDA DB OC QUEUE";
                 //进行数据库层的初始化操作
                 if ([tableProtocolClass conformsToProtocol:@protocol(OPDTableProtocol)]) {
                     NSArray* tableSQLs = [tableProtocolClass  performSelector:@selector(updateTable:toVersion:) withObject:@(begin) withObject:@(end)];
-                    [sqls addObjectsFromArray:tableSQLs];
+                    if (tableSQLs && tableSQLs.count > 0) {
+                        [sqls addObjectsFromArray:tableSQLs];
+                    }
                 }
             }
         }
@@ -182,7 +192,8 @@ static NSString* DB_QUEUE_NAME = @"PANDA DB OC QUEUE";
         NSString* updateVersionSQL = [NSString stringWithFormat:UPDATE_VERSION,_version];
         [sqls addObject:updateVersionSQL];
         
-        BOOL success = [_sqliteManager executeUpdate:[sqls copy]];
+        
+        BOOL success = [_sqliteManager executeUpdate:[sqls componentsJoinedByString:@";"]];
         
         if (success) {
             NSLog(@"Panda Success：数据库更新成功");
